@@ -24,6 +24,7 @@ main()
 	{
 		len=sizeof(client);
 		cs=accept(sockfd,(struct sockaddr *)&client,&len);
+		puts("Client Connected");
 		if((pid=fork())==0){
 			
 			puts("Connected to client\n");
