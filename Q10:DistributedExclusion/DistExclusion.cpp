@@ -1,3 +1,5 @@
+//gcc -std=c++11 -pthread DistExclusion.cpp 
+
 #include <stdio.h>
 #include <string.h>
 #include <pthread.h>
