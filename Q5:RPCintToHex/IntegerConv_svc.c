@@ -3,7 +3,7 @@
  * It was generated using rpcgen.
  */
 
-#include "intToHex.h"
+#include "IntegerConv.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <rpc/pmap_clnt.h>
@@ -17,10 +17,11 @@
 #endif
 
 static void
-inttohex_1(struct svc_req *rqstp, register SVCXPRT *transp)
+intconv_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
 	union {
 		int tohex_1_arg;
+		int tooct_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -35,6 +36,12 @@ inttohex_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		_xdr_argument = (xdrproc_t) xdr_int;
 		_xdr_result = (xdrproc_t) xdr_int;
 		local = (char *(*)(char *, struct svc_req *)) tohex_1_svc;
+		break;
+
+	case toOct:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_int;
+		local = (char *(*)(char *, struct svc_req *)) tooct_1_svc;
 		break;
 
 	default:
@@ -62,15 +69,15 @@ main (int argc, char **argv)
 {
 	register SVCXPRT *transp;
 
-	pmap_unset (INTTOHEX, INTTOHEX_1);
+	pmap_unset (INTCONV, INTCONV_1);
 
 	transp = svcudp_create(RPC_ANYSOCK);
 	if (transp == NULL) {
 		fprintf (stderr, "%s", "cannot create udp service.");
 		exit(1);
 	}
-	if (!svc_register(transp, INTTOHEX, INTTOHEX_1, inttohex_1, IPPROTO_UDP)) {
-		fprintf (stderr, "%s", "unable to register (INTTOHEX, INTTOHEX_1, udp).");
+	if (!svc_register(transp, INTCONV, INTCONV_1, intconv_1, IPPROTO_UDP)) {
+		fprintf (stderr, "%s", "unable to register (INTCONV, INTCONV_1, udp).");
 		exit(1);
 	}
 
@@ -79,8 +86,8 @@ main (int argc, char **argv)
 		fprintf (stderr, "%s", "cannot create tcp service.");
 		exit(1);
 	}
-	if (!svc_register(transp, INTTOHEX, INTTOHEX_1, inttohex_1, IPPROTO_TCP)) {
-		fprintf (stderr, "%s", "unable to register (INTTOHEX, INTTOHEX_1, tcp).");
+	if (!svc_register(transp, INTCONV, INTCONV_1, intconv_1, IPPROTO_TCP)) {
+		fprintf (stderr, "%s", "unable to register (INTCONV, INTCONV_1, tcp).");
 		exit(1);
 	}
 

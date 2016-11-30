@@ -4,30 +4,39 @@
  * as a guideline for developing your own functions.
  */
 
-#include "intToHex.h"
+#include "IntegerConv.h"
 
 
 void
-inttohex_1(char *host)
+intconv_1(char *host)
 {
 	CLIENT *clnt;
 	int  *result_1;
 	int  tohex_1_arg;
-
+	int  *result_2;
+	int  tooct_1_arg;
+	int inputValue;
 #ifndef	DEBUG
-	clnt = clnt_create (host, INTTOHEX, INTTOHEX_1, "udp");
+	clnt = clnt_create (host, INTCONV, INTCONV_1, "udp");
 	if (clnt == NULL) {
 		clnt_pcreateerror (host);
 		exit (1);
 	}
 #endif	/* DEBUG */
-	puts("Enter a number: ");
-	scanf("%d" , &tohex_1_arg);
+	printf("Enter the integer value: ");
+	scanf("%d",&inputValue);
+	tohex_1_arg = inputValue;
 	result_1 = tohex_1(&tohex_1_arg, clnt);
 	if (result_1 == (int *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
-	printf("Hex: %x \n",*result_1);
+	printf("\nInteger->Hex: %x\n",*result_1);
+	tooct_1_arg = inputValue;
+	result_2 = tooct_1(&tooct_1_arg, clnt);
+	if (result_2 == (int *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	printf("Integer->Oct: %o\n",*result_2);
 #ifndef	DEBUG
 	clnt_destroy (clnt);
 #endif	 /* DEBUG */
@@ -44,6 +53,6 @@ main (int argc, char *argv[])
 		exit (1);
 	}
 	host = argv[1];
-	inttohex_1 (host);
+	intconv_1 (host);
 exit (0);
 }

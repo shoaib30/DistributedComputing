@@ -3,18 +3,18 @@
 
 # Parameters
 
-CLIENT = intToHex_client
-SERVER = intToHex_server
+CLIENT = IntegerConv_client
+SERVER = IntegerConv_server
 
 SOURCES_CLNT.c = 
 SOURCES_CLNT.h = 
 SOURCES_SVC.c = 
 SOURCES_SVC.h = 
-SOURCES.x = intToHex.x
+SOURCES.x = IntegerConv.x
 
-TARGETS_SVC.c = intToHex_svc.c intToHex_server.c   
-TARGETS_CLNT.c = intToHex_clnt.c intToHex_client.c   
-TARGETS = intToHex.h   intToHex_clnt.c intToHex_svc.c intToHex_client.c intToHex_server.c
+TARGETS_SVC.c = IntegerConv_svc.c IntegerConv_server.c   
+TARGETS_CLNT.c = IntegerConv_clnt.c IntegerConv_client.c   
+TARGETS = IntegerConv.h   IntegerConv_clnt.c IntegerConv_svc.c IntegerConv_client.c IntegerConv_server.c
 
 OBJECTS_CLNT = $(SOURCES_CLNT.c:%.c=%.o) $(TARGETS_CLNT.c:%.c=%.o)
 OBJECTS_SVC = $(SOURCES_SVC.c:%.c=%.o) $(TARGETS_SVC.c:%.c=%.o)

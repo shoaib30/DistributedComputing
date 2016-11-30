@@ -3,8 +3,8 @@
  * It was generated using rpcgen.
  */
 
-#ifndef _INTTOHEX_H_RPCGEN
-#define _INTTOHEX_H_RPCGEN
+#ifndef _INTEGERCONV_H_RPCGEN
+#define _INTEGERCONV_H_RPCGEN
 
 #include <rpc/rpc.h>
 
@@ -14,24 +14,30 @@ extern "C" {
 #endif
 
 
-#define INTTOHEX 0x2fffffff
-#define INTTOHEX_1 1
+#define INTCONV 1
+#define INTCONV_1 1
 
 #if defined(__STDC__) || defined(__cplusplus)
 #define toHex 1
 extern  int * tohex_1(int *, CLIENT *);
 extern  int * tohex_1_svc(int *, struct svc_req *);
-extern int inttohex_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
+#define toOct 2
+extern  int * tooct_1(int *, CLIENT *);
+extern  int * tooct_1_svc(int *, struct svc_req *);
+extern int intconv_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
 #define toHex 1
 extern  int * tohex_1();
 extern  int * tohex_1_svc();
-extern int inttohex_1_freeresult ();
+#define toOct 2
+extern  int * tooct_1();
+extern  int * tooct_1_svc();
+extern int intconv_1_freeresult ();
 #endif /* K&R C */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* !_INTTOHEX_H_RPCGEN */
+#endif /* !_INTEGERCONV_H_RPCGEN */
