@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdint.h>
-#include <unistd.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
