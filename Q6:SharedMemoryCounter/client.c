@@ -14,11 +14,11 @@ int main()
     printf("Accessing shared memory at %d\n",shmid);
     addr = (int *)shmat(shmid, NULL, 0);
     printf("got %d\n", *addr);
-    c=*addr;
     do
     {
         printf("Enter 1 if you want to increment ");
         scanf("%d",&ch);
+        c=*addr;
         *addr=++c;
         printf("Counter incremented to %d\n", c);
     }
