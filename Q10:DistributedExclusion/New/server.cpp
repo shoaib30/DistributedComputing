@@ -1,3 +1,4 @@
+//g++ server.cpp -lpthread -o server
 #include<iostream>
 #include<vector>
 #include<cstdlib>
