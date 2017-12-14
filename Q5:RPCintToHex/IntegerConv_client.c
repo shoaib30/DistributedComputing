@@ -23,20 +23,20 @@ intconv_1(char *host)
 		exit (1);
 	}
 #endif	/* DEBUG */
-	printf("Enter the integer value: ");
+	printf("Enter an integer: \n");
 	scanf("%d",&inputValue);
 	tohex_1_arg = inputValue;
 	result_1 = tohex_1(&tohex_1_arg, clnt);
-	if (result_1 == (int *) NULL) {
+	if (result_1 == (my_result *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
-	printf("\nInteger->Hex: %x\n",*result_1);
+	printf("Received Hex value from server: %s\n",result_1->data);
 	tooct_1_arg = inputValue;
 	result_2 = tooct_1(&tooct_1_arg, clnt);
-	if (result_2 == (int *) NULL) {
+	if (result_2 == (my_result *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
-	printf("Integer->Oct: %o\n",*result_2);
+	printf("Received Octal value from server:  %s\n",result_2->data);
 #ifndef	DEBUG
 	clnt_destroy (clnt);
 #endif	 /* DEBUG */
