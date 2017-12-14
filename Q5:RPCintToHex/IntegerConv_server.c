@@ -6,30 +6,34 @@
 
 #include "IntegerConv.h"
 
-int *
+my_result *
 tohex_1_svc(int *argp, struct svc_req *rqstp)
 {
-	static int  result;
-
+	static my_result  result;
 	/*
 	 * insert server code here
 	 */
-	printf("\nRecieved %d from client\n", *argp);
-	result = *argp;
-	printf("%d -> %x\n",*argp,result);
+	static char text[255]; 
+	memset(&result, '\0', sizeof(result));                                
+	memset(text, '\0', sizeof(text));
+	printf("Received %d from client\n",*argp);
+	sprintf(text, "%x", *argp);
+	result.data = text;
 	return &result;
 }
 
-int *
+my_result *
 tooct_1_svc(int *argp, struct svc_req *rqstp)
 {
-	static int  result;
-
+	static my_result  result;
 	/*
 	 * insert server code here
 	 */
-	printf("Recieved %d from client\n", *argp);
-	result = *argp;
-	printf("%d -> %o\n",*argp,result);
+	static char text[255]; 
+	memset(&result, '\0', sizeof(result));                                
+	memset(text, '\0', sizeof(text));
+	printf("Received %d from client\n",*argp);
+	sprintf(text, "%o", *argp);
+	result.data = text;
 	return &result;
 }
